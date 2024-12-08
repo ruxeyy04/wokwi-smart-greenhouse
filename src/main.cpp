@@ -5,6 +5,8 @@
 #include <DHT.h>
 #include "do.h"
 #include "ph.h"
+
+#include "sendData.h"
 // Pins
 #define DHT_PIN 14
 #define LDR_PIN 32
@@ -197,7 +199,7 @@ void loop()
   Serial.print("Water Valve: ");
   Serial.println(relay4State ? "ON" : "OFF");
   Serial.println("---");
-
+  sendData(lightLevel, doValue, ph_act, temperature, humidity, waterPercent);
   // Delay for stability
   delay(2000);
 }
